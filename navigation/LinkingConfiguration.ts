@@ -1,24 +1,39 @@
-import * as Linking from 'expo-linking';
+import * as Linking from "expo-linking";
 
 export default {
-  prefixes: [Linking.makeUrl('/')],
+  prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          HomeScreen: {
             screens: {
-              TabOneScreen: 'one',
+              HomeScreen: "Home",
             },
           },
-          TabTwo: {
+          Category: {
             screens: {
-              TabTwoScreen: 'two',
+              CategoryScreen: "Category",
             },
           },
+          OderList: {
+            screens: {
+              OderListScreen: "OderList",
+            },
+          },
+          Account: {
+            screens: {
+              AccountScreen: "Account",
+            }
+          }
         },
       },
-      NotFound: '*',
+      NotFound: "*",
+      MainFoodList: {
+        screens: {
+          MainFoodList: "MainFoodList",
+        }
+      }
     },
   },
 };

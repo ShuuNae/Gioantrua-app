@@ -1,5 +1,6 @@
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
+const tintOrange= ' #FDD40C';
 
 export default {
   light: {
@@ -16,4 +17,11 @@ export default {
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
+  orange: {
+    text: '#FDD40C',
+    background: '#000',
+    tint: tintOrange,
+    tabIconDefault: '#ccc',
+    tabIconSelected: tintOrange,
+  }
 };
