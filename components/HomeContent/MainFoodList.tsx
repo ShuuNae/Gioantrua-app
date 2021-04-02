@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, ListRenderItem, StyleSheet, View, Text } from "react-native";
+import { FlatList, ListRenderItem, StyleSheet } from "react-native";
 import RenderMainFoodList from "./RenderMainFoodList";
 
 interface MainFoodList {
@@ -14,6 +14,7 @@ interface MainFoodList {
 interface IProps {
   data: Array<MainFoodList>;
   type: string;
+  numColumns?: number;
 }
 
 const MainFoodList = (props: IProps) => {
@@ -22,8 +23,9 @@ const MainFoodList = (props: IProps) => {
   };
 
   const numColumns = Math.ceil(props.data.length / 2);
-  let type = "vertical";
-  return props.type === type ? (
+  let vertical = "vertical";
+  let horizontal = "horizontal";
+  return props.type === vertical ? (
     <FlatList
       scrollEnabled={false}
       contentContainerStyle={{
@@ -35,13 +37,21 @@ const MainFoodList = (props: IProps) => {
       data={props.data}
       renderItem={renderMainFoodList}
     />
-  ) : (
+  ) : props.type === horizontal ? 
+    (
     <FlatList
       data={props.data}
       renderItem={renderMainFoodList}
       horizontal={true}
     />
-  );
+  ): (<FlatList
+    data={props.data}
+    contentContainerStyle={{
+      backgroundColor: '#fff'
+    }}
+    renderItem={renderMainFoodList}
+    numColumns={props.numColumns}
+  />);
 };
 
 export default MainFoodList;

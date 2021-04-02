@@ -27,7 +27,6 @@ const RenderMainFoodList = (props: IProps) => {
   const [foodCount, setFoodCount] = React.useState<number>(1);
   const plusFoodCount = () => {
     setFoodCount((foodCount) => foodCount + 1);
-    console.log(props.data.item);
   };
   const minusFoodCount = () => {
     setFoodCount((foodCount) => foodCount - 1);
@@ -119,16 +118,20 @@ export default RenderMainFoodList;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 0.5,
+    width: 144,
     backgroundColor: "#fff",
     alignItems: "center",
     // justifyContent: "center",
-    padding: 10,
+    // padding: 10,
+    marginHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 4,
   },
   ////////////////////////////////////////////////////////////////////////////////////////////////
   priceContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "center",
     paddingTop: 4,
   },
 
@@ -138,6 +141,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     letterSpacing: -0.41,
     color: "#EA1E1E",
+    // textAlign: "center",
   },
 
   salePriceText: {

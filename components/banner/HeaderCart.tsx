@@ -1,18 +1,37 @@
 import { SimpleLineIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 // import navigation from "../../navigation";
 
-const HeaderCart = ({...props}: any) => {
+interface IProps {
+  navigation?: any;
+  isHome: boolean;
+  headerName?: string;
+}
+
+const HeaderCart = ({ ...props }: IProps) => {
   return (
     <View style={{ flex: 1, flexDirection: "row" }}>
       <View style={{ flex: 1, alignItems: "flex-start" }}>
-        <TouchableOpacity onPress={() => {props.navigation.openDrawer()}} >
-          <SimpleLineIcons name="menu" size={24} color="white" />
-        </TouchableOpacity>
+        {props.isHome ? (
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.openDrawer();
+            }}
+          >
+            <SimpleLineIcons name="menu" size={24} color="white" />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={{ paddingTop: "5%" }}
+          >
+            <Ionicons name="arrow-back-sharp" size={30} color="black" />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={{ flex: 1 }}>
-        <Text></Text>
+        <Text style={styles.headerText}>{props.headerName}</Text>
       </View>
       <View
         style={{
@@ -49,6 +68,14 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     paddingTop: 15,
     fontSize: 13,
-    fontWeight: "600"
+    fontWeight: "600",
   },
+  headerText : {
+    fontWeight: "bold",
+    fontSize: 17,
+    textAlign: "center",
+    lineHeight: 22,
+    textTransform: "uppercase",
+    paddingTop: 10,
+  }
 });

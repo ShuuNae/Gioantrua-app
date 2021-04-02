@@ -26,7 +26,7 @@ export default function HomeScreen({ navigation }: any) {
           }}
         />
         <View style={styles.headerCart}>
-          <HeaderCart navigation={navigation} />
+          <HeaderCart navigation={navigation} isHome={true} />
         </View>
       </View>
       <View style={styles.daySelector}>
@@ -39,7 +39,7 @@ export default function HomeScreen({ navigation }: any) {
       </View>
       <View style={styles.content}>
         <ScrollView>
-          <View style={{ paddingHorizontal: 4 }}>
+          <View style={{ paddingHorizontal: 4, backgroundColor: "#fff" }}>
             <Text style={styles.foodCategoryText}>Món Chính</Text>
             <ScrollView
               horizontal
@@ -50,11 +50,11 @@ export default function HomeScreen({ navigation }: any) {
               <MainFoodList data={mainFoodData} type="vertical" />
             </ScrollView>
           </View>
-          <View style={{ paddingHorizontal: 4 }}>
+          <View style={{ paddingHorizontal: 4, backgroundColor: "#fff" }}>
             <Text style={styles.foodCategoryText}>Món phụ</Text>
             <MainFoodList data={sideFoodData} type="horizontal" />
           </View>
-          <View style={{ paddingHorizontal: 4 }}>
+          <View style={{ paddingHorizontal: 4, backgroundColor: "#fff" }}>
             <Text style={styles.foodCategoryText}>Nước uống</Text>
             <MainFoodList data={drinksData} type="horizontal" />
           </View>
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   foodCategoryText: {
+    color: "black",
     fontWeight: "bold",
     fontSize: 17,
     lineHeight: 22,
