@@ -1,17 +1,18 @@
 import * as React from "react";
 import {
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
   FlatList,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
 } from "react-native";
-import { View, Text } from "../components/Themed";
 import dayData from "../Api/dayData";
-import DayList from "../components/HomeContent/DayList";
+import drinksData from "../Api/drinksData";
 import mainFoodData from "../Api/mainFoodData";
-
-import MainFoodList from "../components/HomeContent/MainFoodList";
+import sideFoodData from "../Api/sideFoodData";
 import HeaderCart from "../components/banner/HeaderCart";
+import DayList from "../components/HomeContent/DayList";
+import MainFoodList from "../components/HomeContent/MainFoodList";
+import { Text, View } from "../components/Themed";
 
 export default function HomeScreen({ navigation }: any) {
   return (
@@ -37,13 +38,27 @@ export default function HomeScreen({ navigation }: any) {
         />
       </View>
       <View style={styles.content}>
-        <Text>Món Chính</Text>
-        <FlatList
-          data={mainFoodData}
-          renderItem={MainFoodList}
-          keyExtractor={(item) => item.id}
-          horizontal={true}
-        />
+        <ScrollView>
+          <View style={{ paddingHorizontal: 4 }}>
+            <Text style={styles.foodCategoryText}>Món Chính</Text>
+            <ScrollView
+              horizontal
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={true}
+              contentContainerStyle={{ paddingVertical: 4 }}
+            >
+              <MainFoodList data={mainFoodData} type="vertical" />
+            </ScrollView>
+          </View>
+          <View style={{ paddingHorizontal: 4 }}>
+            <Text style={styles.foodCategoryText}>Món phụ</Text>
+            <MainFoodList data={sideFoodData} type="horizontal" />
+          </View>
+          <View style={{ paddingHorizontal: 4 }}>
+            <Text style={styles.foodCategoryText}>Nước uống</Text>
+            <MainFoodList data={drinksData} type="horizontal" />
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -71,7 +86,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 2.5,
-    backgroundColor: "#fff",
+    backgroundColor: "#E5E5E5",
   },
   title: {
     fontSize: 20,
@@ -81,5 +96,12 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: "80%",
+  },
+  foodCategoryText: {
+    fontWeight: "bold",
+    fontSize: 17,
+    lineHeight: 22,
+    paddingLeft: 12,
+    paddingTop: 12,
   },
 });
