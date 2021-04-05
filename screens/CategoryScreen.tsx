@@ -1,35 +1,60 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import * as React from "react";
+import { StyleSheet } from "react-native";
 import HeaderCart from "../components/banner/HeaderCart";
-import { Text, View } from '../components/Themed';
+import { Text, View } from "../components/Themed";
 import mainFoodData from "../Api/mainFoodData";
 import sideFoodData from "../Api/sideFoodData";
 import MainFoodList from "../components/HomeContent/MainFoodList";
 import drinksData from "../Api/drinksData";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Dimensions } from 'react-native';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { Dimensions } from "react-native";
 
 const TopTab = createMaterialTopTabNavigator();
-const windowWidth = Dimensions.get('window').width;
+const windowWidth = Dimensions.get("window").width;
 const numColumns = Math.floor(windowWidth / 144);
 
 export default function CategoryScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header} >
-        <View style={styles.headerCart} >
-        <HeaderCart isHome={false} headerName = "danh mục" />
+      <View style={styles.header}>
+        <View style={styles.headerCart}>
+          <HeaderCart isHome={false} headerName="danh mục" />
         </View>
-        
       </View>
       <View style={styles.content}>
-      <TopTab.Navigator>
-    <TopTab.Screen name="Món chính" children = {() => <MainFoodList data={mainFoodData} type="noScrollVertical" numColumns={numColumns} />} />
-      <TopTab.Screen name="Món phụ" children = {() => <MainFoodList data={sideFoodData} type="noScrollVertical" numColumns={numColumns} />} />
-      <TopTab.Screen name="Nước uống" children = {() => <MainFoodList data={drinksData} type="noScrollVertical" numColumns={numColumns} />} />
-    </TopTab.Navigator>
+        <TopTab.Navigator>
+          <TopTab.Screen
+            name="Món chính"
+            children={() => (
+              <MainFoodList
+                data={mainFoodData}
+                type="noScrollVertical"
+                numColumns={numColumns}
+              />
+            )}
+          />
+          <TopTab.Screen
+            name="Món phụ"
+            children={() => (
+              <MainFoodList
+                data={sideFoodData}
+                type="noScrollVertical"
+                numColumns={numColumns}
+              />
+            )}
+          />
+          <TopTab.Screen
+            name="Nước uống"
+            children={() => (
+              <MainFoodList
+                data={drinksData}
+                type="noScrollVertical"
+                numColumns={numColumns}
+              />
+            )}
+          />
+        </TopTab.Navigator>
       </View>
-      
     </View>
   );
 }
@@ -37,11 +62,11 @@ export default function CategoryScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor :"#fff"
+    backgroundColor: "#fff",
   },
   header: {
     flex: 0.4,
-    backgroundColor: '#FDD40C'
+    backgroundColor: "#FDD40C",
   },
   headerCart: {
     marginTop: "12%",

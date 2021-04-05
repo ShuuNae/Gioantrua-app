@@ -59,5 +59,15 @@ const mainFoodData = [
     salePrice: "",
     number: 0,
   },
+  {
+    id: "7",
+    image:
+      "https://s3-alpha-sig.figma.com/img/8df6/6b95/93515c3039360095ce217f12f7d99261?Expires=1618185600&Signature=JrnzQvuuYDJZIb5~AsBwG0gv9YCWPcDtDQmA86s2opHQpeY~issCEDLHN2Qd4Edz6lVlPz12lg5sAaENjtF5~w2cFntyhBzImRw-wqrcV3gg7HfHWGRCAs9xYakXKNSuWbRpcFO7h2J-POa8VkdRzhlAWcIqkFitnZBBLngHOHWho8IXt1kWMsuxqw5abwgABl2csFM8FegEQYFGQxPLca7OfFVsH8R43~jqHP04V-htcWiH-dBVQ6LnOMt-Acuos6VObvjLBADVVNobAv8IowOiMUNPF4JBYYusy-3lSBTwyDzZFesq2yAwG3cjyT9X1Jmhzd5kBavnKEQpIY-VIw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    foodName: "Cơm chả trứng ",
+    price: "30.000",
+    isSale: false,
+    salePrice: "",
+    number: 0,
+  },
 ];
 export default mainFoodData;

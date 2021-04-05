@@ -36,22 +36,25 @@ const MainFoodList = (props: IProps) => {
       showsHorizontalScrollIndicator={false}
       data={props.data}
       renderItem={renderMainFoodList}
+      key={numColumns}
+      keyExtractor={(item) => numColumns + item.id}
     />
-  ) : props.type === horizontal ? 
-    (
+  ) : props.type === horizontal ? (
     <FlatList
       data={props.data}
       renderItem={renderMainFoodList}
       horizontal={true}
     />
-  ): (<FlatList
-    data={props.data}
-    contentContainerStyle={{
-      backgroundColor: '#fff'
-    }}
-    renderItem={renderMainFoodList}
-    numColumns={props.numColumns}
-  />);
+  ) : (
+    <FlatList
+      data={props.data}
+      contentContainerStyle={{
+        backgroundColor: "#fff",
+      }}
+      renderItem={renderMainFoodList}
+      numColumns={props.numColumns}
+    />
+  );
 };
 
 export default MainFoodList;
