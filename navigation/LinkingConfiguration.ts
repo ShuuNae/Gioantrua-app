@@ -33,6 +33,30 @@ export default {
         screens: {
           MainFoodList: "MainFoodList",
         }
+      },
+      CartStack: {
+        screens: {
+          Cart: {
+            screens: {
+              CartScreen: "Cart",
+            }
+          },
+          ShipInfo: {
+            screens: {
+              ShipInfoScreen: "ShipInfo",
+            }
+          },
+          Payment: {
+            screens: {
+              PaymentScreen: "Payment",
+            }
+          },
+          FinishPayment: {
+            screens: {
+              FinishPaymentScreen: "FinishPayment",
+            }
+          }
+        }
       }
     },
   },

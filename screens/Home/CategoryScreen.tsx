@@ -1,24 +1,23 @@
-import * as React from "react";
-import { StyleSheet } from "react-native";
-import HeaderCart from "../components/banner/HeaderCart";
-import { Text, View } from "../components/Themed";
-import mainFoodData from "../Api/mainFoodData";
-import sideFoodData from "../Api/sideFoodData";
-import MainFoodList from "../components/HomeContent/MainFoodList";
-import drinksData from "../Api/drinksData";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Dimensions } from "react-native";
+import * as React from "react";
+import { Dimensions, StyleSheet } from "react-native";
+import drinksData from "../../Api/drinksData";
+import mainFoodData from "../../Api/mainFoodData";
+import sideFoodData from "../../Api/sideFoodData";
+import HeaderCart from "../../components/banner/HeaderCart";
+import MainFoodList from "../../components/HomeContent/MainFoodList";
+import { View } from "../../components/Themed";
 
 const TopTab = createMaterialTopTabNavigator();
 const windowWidth = Dimensions.get("window").width;
 const numColumns = Math.floor(windowWidth / 144);
 
-export default function CategoryScreen() {
+export default function CategoryScreen({navigation}:any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerCart}>
-          <HeaderCart isHome={false} headerName="danh mục" />
+          <HeaderCart navigation={navigation} isHome={false} headerName="danh mục" />
         </View>
       </View>
       <View style={styles.content}>

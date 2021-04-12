@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  CartStack: undefined;
 };
 
 export type BottomTabParamList = {
@@ -9,6 +10,13 @@ export type BottomTabParamList = {
   "Đơn hàng": undefined;
   "Tài khoản": undefined;
 };
+
+export type CartScreenParamList = {
+  Cart: undefined,
+  ShipInfo: undefined,
+  Payment: undefined,
+  FinishPayment: undefined,
+}
 
 export type TabOneParamList = {
   Home: undefined;

@@ -13,6 +13,8 @@ import SampleScreen from "../screens/SampleScreen";
 import { RootStackParamList } from "../types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
+import CartScreen from "../screens/Cart/CartScreen";
+import CartStackNavigator from "./CartStackNavigator"
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -49,6 +51,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={DrawerNavigator} />
+      <Stack.Screen name="CartStack" component={CartStackNavigator} />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
@@ -57,3 +60,4 @@ function RootNavigator() {
     </Stack.Navigator>
   );
 }
+

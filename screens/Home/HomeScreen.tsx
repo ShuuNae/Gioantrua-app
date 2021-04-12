@@ -5,16 +5,16 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
-import dayData from "../Api/dayData";
-import drinksData from "../Api/drinksData";
-import mainFoodData from "../Api/mainFoodData";
-import sideFoodData from "../Api/sideFoodData";
-import HeaderCart from "../components/banner/HeaderCart";
-import DayList from "../components/HomeContent/DayList";
-import MainFoodList from "../components/HomeContent/MainFoodList";
-import { Text, View } from "../components/Themed";
+import dayData from "../../Api/dayData";
+import drinksData from "../../Api/drinksData";
+import mainFoodData from "../../Api/mainFoodData";
+import sideFoodData from "../../Api/sideFoodData";
+import HeaderCart from "../../components/banner/HeaderCart";
+import DayList from "../../components/HomeContent/DayList";
+import MainFoodList from "../../components/HomeContent/MainFoodList";
+import { Text, View } from "../../components/Themed";
 
-export default function HomeScreen({ navigation }: any) {
+export default function HomeScreen({navigation}: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>

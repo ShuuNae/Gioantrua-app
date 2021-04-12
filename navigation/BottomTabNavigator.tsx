@@ -8,10 +8,10 @@ import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import HomeScreen from "../screens/HomeScreen";
-import CategoryScreen from "../screens/CategoryScreen";
-import OrderListScreen from "../screens/OrderListScreen";
-import AccountScreen from "../screens/AccountScreen";
+import HomeScreen from "../screens/Home/HomeScreen";
+import CategoryScreen from "../screens/Home/CategoryScreen";
+import OrderListScreen from "../screens/Home/OrderListScreen";
+import AccountScreen from "../screens/Home/AccountScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -26,7 +26,6 @@ export default function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Home"
-        // children={() => <HomeScreen navigation={navigation} />}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
@@ -64,9 +63,7 @@ export default function BottomTabNavigator() {
         name="Tài khoản"
         component={AccountScreen}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="person" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -88,25 +85,12 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerBackground: () => (
-            <Image
-              style={StyleSheet.absoluteFill}
-              source={{
-                uri:
-                  "https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg",
-              }}
-            />
-          ),
-          headerStyle: {
-            height: 200,
-          },
-        }}
-      />
+    <TabOneStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <TabOneStack.Screen name="Home" component={HomeScreen} />
     </TabOneStack.Navigator>
   );
 }
@@ -115,12 +99,12 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="Category"
-        component={CategoryScreen}
-        options={{ headerTitle: "DANH MỤC" }}
-      />
+    <TabTwoStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <TabTwoStack.Screen name="Category" component={CategoryScreen} />
     </TabTwoStack.Navigator>
   );
 }
