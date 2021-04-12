@@ -42,14 +42,19 @@ const testData = [
     price: "27.000",
     isSale: true,
     salePrice: "30.000",
-    number: 1,
+    number: 2,
   },
+  
 ];
 
 const FoodOderList = () => {
   const orderListData = [...testData];
   const [foodOderListData, setFoodOderListData] = React.useState(orderListData);
-
+  let foodCounter = 0;
+  foodOderListData.map((item) => (foodCounter = foodCounter + item.number));
+  const [totalFoodCounter, setTotalFoodCounter] = React.useState<number>(
+    foodCounter
+  );
   const [isCollapsed, setCollapsed] = React.useState<boolean>(true);
   const handleCollapse = () => {
     setCollapsed((prevState) => !prevState);
@@ -77,18 +82,22 @@ const FoodOderList = () => {
     <SafeAreaView>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <Text style={styles.headerText}>Đơn hàng của bạn</Text>
-        <Text>{testData.length} món</Text>
+        <Text>{totalFoodCounter} món</Text>
       </View>
+      <View>
       <Collapsible collapsed={isCollapsed}>
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
           <FlatList
             data={foodOderListData}
             renderItem={renderFoodOderList}
             ItemSeparatorComponent={renderSeparatorList}
             keyExtractor={(item) => item.id}
+            nestedScrollEnabled
           />
         </SafeAreaView>
       </Collapsible>
+      </View>
+      
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <TouchableOpacity onPress={handleCollapse}>
           <Text style={styles.buttonText}>

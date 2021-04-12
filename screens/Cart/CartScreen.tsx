@@ -1,9 +1,16 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView, SafeAreaView, Text } from "react-native";
 import userData from "../../Api/userData";
 import HeaderCart from "../../components/banner/HeaderCart";
 import FoodOderList from "../../components/CartContent/FoodOderList";
 import ShipInfo from "../../components/CartContent/ShipInfo";
+import CustomInput from "../../components/CustomComponents/CustomInput";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import CustomScrollView from "../../components/CustomComponents/CustomScrollView";
+import PaymentContainer from "../../components/CartContent/PaymentContainer";
+
+import ConfirmPaymentContainer from "../../components/CartContent/ConfirmPaymentContainer";
 
 const CartScreen = ({ navigation, route, ...props }: any) => {
   const userDataClone = { ...userData };
@@ -15,8 +22,22 @@ const CartScreen = ({ navigation, route, ...props }: any) => {
       setUserInfo(route.params?.updatedUserInfo);
     }
   }, [route.params?.updatedUserInfo]);
+
+  const discountIcon = (
+    <MaterialCommunityIcons
+      name="ticket-confirmation"
+      size={24}
+      color="#696969"
+    />
+  );
+
+  const noteIcon = (
+    <MaterialIcons name="sticky-note-2" size={24} color="#696969" />
+  );
+
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerCart}>
           <HeaderCart
@@ -27,16 +48,42 @@ const CartScreen = ({ navigation, route, ...props }: any) => {
           />
         </View>
       </View>
-      <View style={styles.paymentStepContainer}></View>
+     
       <View style={styles.content}>
-        <View style={styles.shipInfoContainer}>
-          <ShipInfo navigation={navigation} userData={userInfo} />
+        <CustomScrollView>
+        <View style={styles.contentLayout}>
+          <Text>hello</Text>
         </View>
-        <View style={styles.oderList}>
-          <FoodOderList />
-        </View>
+          <View style={styles.contentLayout}>
+            <ShipInfo navigation={navigation} userData={userInfo} />
+          </View>
+          <View style={styles.contentLayout}>
+            <FoodOderList />
+          </View>
+          <View style={styles.contentLayout}>
+            <CustomInput
+              titleText="Ghi Chú"
+              icon={noteIcon}
+              placeholder="Thêm ghi chú của bạn (nếu có)"
+            />
+          </View>
+          <View style={styles.contentLayout}>
+            <CustomInput
+              titleText="Khuyến Mãi"
+              icon={discountIcon}
+              placeholder="Nhập mã khuyến mãi"
+              isButtonShow={true}
+            />
+          </View>
+          <View style={styles.contentLayout}>
+            <PaymentContainer />
+          </View>
+          <View style={styles.contentLayout}>
+            <ConfirmPaymentContainer />
+          </View>
+        </CustomScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -58,25 +105,16 @@ const styles = StyleSheet.create({
     flex: 0.7,
     flexDirection: "row",
   },
-  paymentStepContainer: {
-    flex: 0.4,
-    backgroundColor: "blue",
-  },
-  shipInfoContainer: {
-    // flex: 0.5,
-    backgroundColor: "#FFFFFF",
-    padding: "3%",
-  },
   content: {
-    flex: 2.1,
+    flex: 2.5,
     backgroundColor: "#E5E5E5",
   },
-  oderList: {
-    // flex: 0.5,
+  contentLayout: {
     backgroundColor: "#FFFFFF",
     padding: "3%",
     marginTop: "2%",
   },
+
 });
 {
 }
