@@ -1,18 +1,22 @@
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, View, ScrollView, SafeAreaView, Text } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import userData from "../../Api/userData";
 import HeaderCart from "../../components/banner/HeaderCart";
+import ConfirmPaymentContainer from "../../components/CartContent/ConfirmPaymentContainer";
 import FoodOderList from "../../components/CartContent/FoodOderList";
+import PaymentContainer from "../../components/CartContent/PaymentContainer";
 import ShipInfo from "../../components/CartContent/ShipInfo";
 import CustomInput from "../../components/CustomComponents/CustomInput";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 import CustomScrollView from "../../components/CustomComponents/CustomScrollView";
-import PaymentContainer from "../../components/CartContent/PaymentContainer";
-
-import ConfirmPaymentContainer from "../../components/CartContent/ConfirmPaymentContainer";
+import PaymentStep from "../../components/CartContent/PaymentStep";
 
 const CartScreen = ({ navigation, route, ...props }: any) => {
+
+  const moveToPaymentSelector = () => {
+    navigation.navigate('Payment')
+  }
+
   const userDataClone = { ...userData };
   const [userInfo, setUserInfo] = React.useState(userDataClone);
   React.useEffect(() => {
@@ -35,7 +39,6 @@ const CartScreen = ({ navigation, route, ...props }: any) => {
     <MaterialIcons name="sticky-note-2" size={24} color="#696969" />
   );
 
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -48,12 +51,12 @@ const CartScreen = ({ navigation, route, ...props }: any) => {
           />
         </View>
       </View>
-     
+
       <View style={styles.content}>
         <CustomScrollView>
-        <View style={styles.contentLayout}>
-          <Text>hello</Text>
-        </View>
+          <View style={[styles.contentLayout, { backgroundColor: "#E5E5E5" }]}>
+            <PaymentStep step={0} />
+          </View>
           <View style={styles.contentLayout}>
             <ShipInfo navigation={navigation} userData={userInfo} />
           </View>
@@ -79,7 +82,7 @@ const CartScreen = ({ navigation, route, ...props }: any) => {
             <PaymentContainer />
           </View>
           <View style={styles.contentLayout}>
-            <ConfirmPaymentContainer />
+            <ConfirmPaymentContainer title="xác nhận" onPress={() => {moveToPaymentSelector()}} />
           </View>
         </CustomScrollView>
       </View>
@@ -114,7 +117,6 @@ const styles = StyleSheet.create({
     padding: "3%",
     marginTop: "2%",
   },
-
 });
 {
 }

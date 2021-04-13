@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
-const ConfirmPaymentContainer = () => {
+const ConfirmPaymentContainer = ({...props}: any) => {
   return (
     <View style={{ flexDirection: "row" }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -19,8 +19,8 @@ const ConfirmPaymentContainer = () => {
         <Text style={styles.priceText}>114.000đ</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity>
-          <Text style={styles.headerText}>xác nhận</Text>
+        <TouchableOpacity onPress={() => {props.onPress()}}>
+          <Text style={styles.headerText}>{props.title}</Text>
         </TouchableOpacity>
       </View>
     </View>
